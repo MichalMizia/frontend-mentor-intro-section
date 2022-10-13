@@ -1,0 +1,341 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+*::before,
+*::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/*end of reset*/
+:root {
+  --fw-regular: 500;
+  --fw-bold: 700;
+  --Almost-White: hsl(0, 0%, 98%);
+  --Medium-Gray: hsl(0, 0%, 41%);
+  --Almost-Black: hsl(0, 0%, 8%);
+}
+
+body {
+  font-family: "Epilogue", sans-serif;
+  font-size: 18px;
+  color: var(--Almost-Black);
+  background-color: var(--Almost-White);
+}
+
+/*utility classes*/
+.flow > * + * {
+  margin-top: var(--flow-spacer, 1.5em);
+}
+
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+
+/*utility classes*/
+.container {
+  margin: 0 0.5em;
+}
+
+.li-arrow a {
+  position: relative;
+}
+.li-arrow img {
+  position: absolute;
+  top: -30%;
+  left: 100%;
+}
+
+header .header-wrapper {
+  margin: 1em 1.5em;
+}
+header a {
+  text-decoration: none;
+  color: var(--Almost-Black);
+}
+
+/*hero*/
+.mobile-hero {
+  margin-inline: auto;
+}
+
+.desktop-hero {
+  display: none;
+}
+
+.text-col {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-inline: auto;
+}
+.text-col .hero-text {
+  max-width: 40ch;
+  text-align: center;
+}
+
+.img-list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 4em;
+}
+
+.hero-h1 span::before {
+  content: " ";
+}
+
+@media (min-width: 65em) {
+  .desktop-hero {
+    display: block;
+    width: 65%;
+    margin-inline: auto;
+    margin-top: 2em;
+  }
+  .mobile-hero {
+    display: none;
+  }
+  .even-columns {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+  }
+  .column {
+    flex: 1;
+  }
+  .text-col {
+    width: 60%;
+    align-items: flex-start;
+    margin-left: 5em;
+  }
+  .text-col h1 {
+    max-width: 15ch;
+    font-size: 3em;
+  }
+  .text-col h1 span::before {
+    content: "\a";
+    white-space: pre;
+  }
+  .text-col .hero-text {
+    max-width: 45ch;
+    text-align: unset;
+  }
+  .text-col .img-list {
+    width: 80%;
+    justify-content: space-between;
+  }
+}
+.hero-h1 {
+  margin-top: 0.5em;
+  font-size: 2.25em;
+  line-height: 1.2em;
+}
+
+.hero-text {
+  color: var(--Medium-Gray);
+}
+
+.button {
+  padding: 0.75em 1em;
+  border-radius: 1em;
+  background-color: var(--Almost-Black);
+  color: var(--Almost-White);
+  cursor: pointer;
+}
+
+.button:hover {
+  color: var(--Almost-Black);
+  background-color: var(--Almost-White);
+}
+
+/*hero*/
+/*mobile nav*/
+@media (max-width: 55em) {
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .header-nav {
+    display: none;
+  }
+  .header-nav .nav-list1 {
+    align-self: flex-start;
+    margin-top: 4em;
+  }
+  .header-nav .nav-list1 * {
+    margin: 0.75em;
+  }
+  .header-nav .nav-list2 {
+    align-self: center;
+  }
+  .header-nav .nav-list2 * {
+    margin: 1em;
+    text-align: center;
+  }
+  .header-nav .nav-register {
+    padding: 0.5em 3em;
+    border: 1px solid var(--Almost-Black);
+    border-radius: 1em;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    z-index: 999;
+  }
+  .opened {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Almost-White);
+    height: 1000vh;
+    width: 60%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 0 0 1000vh hsla(0deg, 0%, 8%, 0.5);
+  }
+  .sub-list1, .sub-list2 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    padding-left: 3em;
+  }
+  .desktop-logo {
+    display: none;
+  }
+  .hide {
+    display: none;
+  }
+}
+/*mobile nav*/
+/*desktop nav*/
+@media (min-width: 55em) {
+  .mobile-header,
+.mobile-nav-toggle {
+    display: none;
+  }
+  .header-nav, .nav-list1, .nav-list2 {
+    display: flex;
+    align-items: center;
+  }
+  .nav-lists {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 1.5em;
+  }
+  .nav-lists li a {
+    color: var(--Medium-Gray);
+    padding: 0.75em;
+  }
+  .nav-lists li a:hover {
+    font-weight: var(--fw-bold);
+    color: var(--Almost-Black);
+  }
+  .nav-lists .sub-list1, .nav-lists .sub-list2 {
+    display: flex;
+    flex-flow: column nowrap;
+    position: absolute;
+    line-height: 1em;
+    font-size: 0.875em;
+    background-color: white;
+    box-shadow: 0 0 2em 2em rgba(0, 0, 0, 0.1);
+    margin-top: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+  }
+  .nav-lists .sub-list1 {
+    padding: 0.5em 2em 0.5em 1em;
+    justify-content: center;
+    margin-left: -2.5em;
+  }
+  .nav-lists .sub-list1 img {
+    padding: 0 0.5em 1em 0.5em;
+  }
+  .nav-lists .sub-list2 {
+    margin-left: 2em;
+  }
+  .nav-lists .hide {
+    display: none;
+  }
+  .li-arrow a {
+    position: relative;
+  }
+  .li-arrow img {
+    position: absolute;
+    top: 40%;
+    left: 90%;
+  }
+  .nav-register {
+    border: 2px solid var(--Medium-Gray);
+    padding: 0.5em 0.75em;
+    border-radius: 1em;
+  }
+  .nav-register:hover {
+    border: 3px solid var(--Almost-Black);
+    color: var(--Almost-Black);
+  }
+  .hide {
+    display: none;
+  }
+}
+/*desktop nav*/
+@media (hover: hover) and (min-width: 55em) {
+  .features:hover + .hide, .company:hover + .hide, .sub-list1:hover, .sub-list2:hover {
+    display: flex;
+  }
+}/*# sourceMappingURL=styles.css.map */
